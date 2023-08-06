@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 
 const routes = require('./routes');
 
+const { authentication } = require('./middlewares/authenticationMiddleware');
+
 
 const app = express();
 
@@ -18,6 +20,9 @@ app.use('/static', express.static('public'));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(authentication);
+
 app.use(routes);
 
 mongoose.set('strictQuery', false);

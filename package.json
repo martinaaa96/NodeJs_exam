@@ -1,0 +1,27 @@
+{
+  "name": "nodejs_exam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinaaa96/NodeJs_exam.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinaaa96/NodeJs_exam/issues"
+  },
+  "homepage": "https://github.com/martinaaa96/NodeJs_exam#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.1",
+    "mongoose": "^7.4.2"
+  }
+}

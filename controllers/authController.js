@@ -9,7 +9,7 @@ router.post('/register', async (req, res) => {
     const { username, email, password, repeatPassword } = req.body;
 
     await authService.register(username, email, password, repeatPassword);
-
+    res.redirect('/login');
 });
 
 router.get('/login', (req, res) => {

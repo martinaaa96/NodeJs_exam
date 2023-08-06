@@ -2,7 +2,8 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 const jwt = require('../lib/jsonwebtoken');
-const SECRET = '5316a6b56170d04422e3f5874798eea793cc8ccb';
+const { SECRET } = require('../constans');
+
 
 exports.findByUserName = (username) => User.findOne({ username });
 
@@ -53,7 +54,7 @@ exports.login = async (email, password) => {
         username: user.username,
 
     }
-    const token = await jwt.sign( payload, SECRET );
+    const token = await jwt.sign(payload, SECRET);
 
     return token;
 

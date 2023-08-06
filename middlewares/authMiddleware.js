@@ -1,5 +1,7 @@
 const jwt = require('../lib/jsonwebtoken');
 
+const { SECRET } = require('../constans');
+
 
 exports.authentication = async (req, res, next) => {
 
@@ -7,7 +9,7 @@ exports.authentication = async (req, res, next) => {
 
     if (token) {
         try {
-            const decodedToken = await jwt.verify(token);
+            const decodedToken = await jwt.verify(token, SECRET);
 
             req.user = decodedToken;
 
@@ -23,4 +25,11 @@ exports.authentication = async (req, res, next) => {
 
     next();
 
+}
+
+exports.isAuth = (req, res, next) => {
+    if (!req.user) {
+       return res.redirect('/login');
+
+    }
 }

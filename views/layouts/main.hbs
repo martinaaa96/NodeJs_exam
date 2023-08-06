@@ -17,10 +17,13 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="#">All Games Code</a></li>
                 <li><a href="#">Search</a></li>
+                {{#if isAuthenticated}}
                 <li><a href="#">Create Game Offer</a></li>
+                <li><a href="/logout">Logout</a></li>
+                {{else}}
                 <li><a href="/login">Login</a></li>
                 <li><a href="/register">Register</a></li>
-                <li><a href="/logout">Logout</a></li>
+                {{/if}}
             </ul>
         </nav>
     </header>

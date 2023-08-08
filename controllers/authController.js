@@ -9,8 +9,19 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     const { username, email, password, repeatPassword } = req.body;
+    try {
+        const token = await authService.register(username, email, password, repeatPassword);
+        
+        res.cookie('auth', token);
+        res.redirect('/');
 
-    await authService.register(username, email, password, repeatPassword);
+    } catch (error) {
+
+        res.status(400).render('auth/register', { error: error.message })
+    }
+
+
+
     res.redirect('/login');
 
 });
@@ -34,7 +45,7 @@ router.post('/login', async (req, res) => {
 
 
     } catch (error) {
-        return res.status(404).render('auth/login', { error })
+        return res.status(404).render('auth/login', { error: error.message })
 
     }
 

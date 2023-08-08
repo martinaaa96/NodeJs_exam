@@ -6,11 +6,11 @@ const { SECRET } = require('../constans');
 exports.authentication = async (req, res, next) => {
 
     const token = req.cookies['auth'];
-
+    
     if (token) {
         try {
             const decodedToken = await jwt.verify(token, SECRET);
-
+            
             req.user = decodedToken;
             res.locals.isAuthenticated = true;
             res.locals.user = decodedToken;
@@ -31,4 +31,6 @@ exports.isAuth = (req, res, next) => {
         return res.redirect('/login');
 
     }
+ next();
+    
 }

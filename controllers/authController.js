@@ -28,8 +28,11 @@ router.post('/login', async (req, res) => {
 
         const token = await authService.login(email, password);
 
+
         res.cookie('auth', token);
         res.redirect('/');
+
+
     } catch (error) {
         return res.status(404).render('auth/login', { error })
 

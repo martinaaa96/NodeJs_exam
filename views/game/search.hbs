@@ -1,38 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search - Gaming Team</title>
-    <link rel="stylesheet" href="./static/css/styles.css">
-</head>
-
-<body>
-    <header class="header">
-        <nav>
-            <img src="./static/images/logo.jpg" class="logo">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">All Games Code</a></li>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Create Game Offer</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
 
     <main id="search">
         <section class="game-search">
             <h1>Search</h1>
 
-            <form class="search-form" action="#" method="">
-                <input type="text" class="search-game" name="" placeholder="Search here...">
-                <select id="platform" name="">
-                    <option value="">-------</option>
+            <form class="search-form" method="GET">
+                <input type="text" class="search-game" name="name" placeholder="Search here...">
+                <select id="platform" name="platform">
+                    
                     <option value="PC">PC</option>
                     <option value="Nintendo">Nintendo</option>
                     <option value="PS4">PS4</option>
@@ -65,10 +39,3 @@
             </div> -->
         </section>
     </main>
-
-    <footer>
-        <p>Back-End 2023</p>
-    </footer>
-</body>
-
-</html>

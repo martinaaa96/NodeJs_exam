@@ -13,7 +13,9 @@ router.get('/catalog', async (req, res) => {
     res.render('game/catalog', { game });
 
 });
-
+router.get('/search', async (req,res)=>{
+    res.render('game/search');
+})
 router.get('/:gameId/details', async (req, res) => {
 
     const game = await gameService.getOne(req.params.gameId);

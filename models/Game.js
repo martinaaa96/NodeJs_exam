@@ -3,22 +3,27 @@ const mongoose = require('mongoose');
 const gameSchema = new mongoose.Schema({
     name: {
         type: String,
+        minLength: 4,
         required: true
     },
     image: {
         type: String,
-        required: true
+        required: true,
+        validate: /^https?:\/\//,
     },
     price: {
         type: Number,
+        min:0,
         required: true
     },
     description: {
         type: String,
+        minLength:10,
         required: true
     },
     genre: {
         type: String,
+        minLength:2,
         required: true
     },
     platform: {

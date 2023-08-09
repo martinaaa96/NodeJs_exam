@@ -17,10 +17,14 @@ router.get('/:gameId/details', async (req, res) => {
 
     const game = await gameService.getOne(req.params.gameId);
 
+    const isOwner = game.owner == req.user?._id;
 
 
-    res.render('game/details', { game });
-})
+
+        res.render('game/details', { game, isOwner });
+});
+
+
 
 router.get('/create', isAuth, (req, res) => {
     res.render('game/create');

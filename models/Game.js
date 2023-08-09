@@ -29,10 +29,7 @@ const gameSchema = new mongoose.Schema({
         },
         required: true
     },
-    boughtBy: {
-        type: [],
-        required: true
-    },
+
     owner: {
         type: mongoose.Types.ObjectId,
         ref: 'User',
@@ -43,4 +40,4 @@ const gameSchema = new mongoose.Schema({
 
 const Game = mongoose.model('Game', gameSchema);
 
-module.exports= Game;
+module.exports = Game;

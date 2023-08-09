@@ -13,8 +13,13 @@ router.get('/catalog', async (req, res) => {
 
 });
 
-router.get('/:gameId/details', (req, res) => {
-res.render('game/details');
+router.get('/:gameId/details', async (req, res) => {
+
+    const game = await gameService.getOne(req.params.gameId);
+
+
+
+    res.render('game/details', { game });
 })
 
 router.get('/create', isAuth, (req, res) => {

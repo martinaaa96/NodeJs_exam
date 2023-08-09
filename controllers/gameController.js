@@ -13,8 +13,12 @@ router.get('/catalog', async (req, res) => {
     res.render('game/catalog', { game });
 
 });
-router.get('/search', async (req,res)=>{
-    res.render('game/search');
+router.get('/search', async (req, res) => {
+    const { name, platform } = req.query;
+
+    const game = await gameService.search(name, platform);
+
+    res.render('game/search', { game });
 })
 router.get('/:gameId/details', async (req, res) => {
 

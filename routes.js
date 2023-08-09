@@ -9,5 +9,8 @@ router.use(homeController);
 router.use(authController);
 router.use('/game', gameController);
 
+router.all('*', (req,res)=>{
+    res.render('home/404');
+});
 
 module.exports = router;

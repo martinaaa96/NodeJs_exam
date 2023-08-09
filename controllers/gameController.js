@@ -21,10 +21,16 @@ router.get('/:gameId/details', async (req, res) => {
 
 
 
-        res.render('game/details', { game, isOwner });
+    res.render('game/details', { game, isOwner });
 });
 
+router.get('/:gameId/buy', isAuth, async (req, res) => {
 
+    await gameService.buy(req.user._id, req.params.gameId);
+
+    res.redirect(`/game/${req.params.gameId}/details`)
+
+});
 
 router.get('/create', isAuth, (req, res) => {
     res.render('game/create');

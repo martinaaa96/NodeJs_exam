@@ -29,12 +29,15 @@ const gameSchema = new mongoose.Schema({
         },
         required: true
     },
-
     owner: {
         type: mongoose.Types.ObjectId,
         ref: 'User',
 
     },
+    boughtBy: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+    }],
 
 });
 

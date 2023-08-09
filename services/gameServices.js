@@ -10,7 +10,7 @@ exports.buy = async (userId, gameId) => {
     const game = await Game.findById(gameId);
 
     game.boughtBy.push(userId);
-    return  game.save();
+    return game.save();
 
     //await Game.findByIdAndUpdate(gameId, { $push: { boughtBy: userId } });
 
@@ -19,3 +19,4 @@ exports.buy = async (userId, gameId) => {
 
 exports.create = (ownerId, gameData) => Game.create({ ...gameData, owner: ownerId });
 
+exports.edit = (gameId, gameData) => Game.findByIdAndUpdate(gameId, gameData);

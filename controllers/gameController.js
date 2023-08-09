@@ -19,10 +19,10 @@ router.get('/:gameId/details', async (req, res) => {
 
     const isOwner = game.owner == req.user?._id;
 
-    const isBuyer = game.boughtBy.some(id=> id == req.user?._id)
+    const isBuyer = game.boughtBy.some(id => id == req.user?._id)
 
 
-    res.render('game/details', { game, isOwner, isBuyer});
+    res.render('game/details', { game, isOwner, isBuyer });
 });
 
 router.get('/:gameId/buy', isAuth, async (req, res) => {
@@ -30,6 +30,32 @@ router.get('/:gameId/buy', isAuth, async (req, res) => {
     await gameService.buy(req.user._id, req.params.gameId);
 
     res.redirect(`/game/${req.params.gameId}/details`)
+
+});
+
+router.get('/:gameId/edit', isAuth, async (req, res) => {
+
+    const game = await gameService.getOne(req.params.gameId)
+    res.render('game/edit', { game });
+
+});
+
+router.post('/:gameId/edit', isAuth, async (req, res) => {
+
+    const gameData = req.body;
+    await gameService.edit(req.params.gameId, gameData);
+
+
+
+    res.redirect(`/game/${req.params.gameId}/details`);
+
+
+});
+router.get('/:gameId/delete', isAuth, async (req, res) => {
+
+    //
+
+    res.redirect('/game/catalog');
 
 });
 

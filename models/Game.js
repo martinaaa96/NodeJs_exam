@@ -23,7 +23,10 @@ const gameSchema = new mongoose.Schema({
     },
     platform: {
         type: String,
-        enum: ['PC', 'Nintendo', 'PS4', 'PS5', 'XBOX'],
+        enum: {
+            values: ['PC', 'Nintendo', 'PS4', 'PS5', 'XBOX'],
+            message: 'Invalid platform'
+        },
         required: true
     },
     boughtBy: {
@@ -31,8 +34,8 @@ const gameSchema = new mongoose.Schema({
         required: true
     },
     owner: {
-        type:mongoose.Types.ObjectId,
-        ref:'User',
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
 
     },
 

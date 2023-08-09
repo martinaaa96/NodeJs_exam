@@ -5,8 +5,11 @@ const gameService = require('../services/gameServices');
 const { getErrorMessage } = require('../utils/utils');
 
 
-router.get('/catalog', (req,res)=>{
-    res.render('game/catalog');
+router.get('/catalog',async (req,res)=>{
+
+   const game =  await  gameService.getAll();
+
+    res.render('game/catalog', {game });
     
 });
 

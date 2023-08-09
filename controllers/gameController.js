@@ -4,6 +4,7 @@ const { isAuth } = require('../middlewares/authMiddleware');
 const gameService = require('../services/gameServices');
 const { getErrorMessage } = require('../utils/utils');
 
+const { platformMap } = require('../constans');
 
 router.get('/catalog', async (req, res) => {
 
@@ -19,7 +20,7 @@ router.get('/:gameId/details', async (req, res) => {
 
     const isOwner = game.owner == req.user?._id;
 
-    const isBuyer = game.boughtBy.some(id => id == req.user?._id)
+    const isBuyer = game.boughtBy?.some(id => id == req.user?._id)
 
 
     res.render('game/details', { game, isOwner, isBuyer });
@@ -35,8 +36,14 @@ router.get('/:gameId/buy', isAuth, async (req, res) => {
 
 router.get('/:gameId/edit', isAuth, async (req, res) => {
 
-    const game = await gameService.getOne(req.params.gameId)
-    res.render('game/edit', { game });
+    const game = await gameService.getOne(req.params.gameId);
+
+    const platform = Object.keys(platformMap).map(key => ({
+        value: key,
+        label: platformMap[key],
+        isSelected: game.platform == key,
+    }));
+    res.render('game/edit', { game, platform });
 
 });
 
@@ -52,7 +59,7 @@ router.post('/:gameId/edit', isAuth, async (req, res) => {
 
 });
 router.get('/:gameId/delete', isAuth, async (req, res) => {
-
+    await gameService.delete(req.params.gameId);
     //
 
     res.redirect('/game/catalog');

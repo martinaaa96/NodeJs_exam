@@ -20,3 +20,5 @@ exports.buy = async (userId, gameId) => {
 exports.create = (ownerId, gameData) => Game.create({ ...gameData, owner: ownerId });
 
 exports.edit = (gameId, gameData) => Game.findByIdAndUpdate(gameId, gameData);
+
+exports.delete = (gameId) => Game.findByIdAndDelete(gameId);

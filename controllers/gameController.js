@@ -19,9 +19,10 @@ router.get('/:gameId/details', async (req, res) => {
 
     const isOwner = game.owner == req.user?._id;
 
+    const isBuyer = game.boughtBy.some(id=> id == req.user?._id)
 
 
-    res.render('game/details', { game, isOwner });
+    res.render('game/details', { game, isOwner, isBuyer});
 });
 
 router.get('/:gameId/buy', isAuth, async (req, res) => {

@@ -8,9 +8,9 @@ const { platformMap } = require('../constans');
 
 router.get('/catalog', async (req, res) => {
 
-    const game = await gameService.getAll();
+ const game = await gameService.getAll();
 
-    res.render('game/catalog', { game });
+  res.render('game/catalog', { game });
 
 });
 router.get('/search', async (req, res) => {
@@ -65,22 +65,22 @@ router.post('/:gameId/edit', isAuth, async (req, res) => {
 
 });
 router.get('/:gameId/delete', isAuth, async (req, res) => {
-    await gameService.delete(req.params.gameId);
-    //
+ await gameService.delete(req.params.gameId);
 
-    res.redirect('/game/catalog');
+
+ res.redirect('/game/catalog');
 
 });
 
-router.get('/create', isAuth, (req, res) => {
+ router.get('/create', isAuth, (req, res) => {
     res.render('game/create');
-});
+ });
 
-router.post('/create', isAuth, async (req, res) => {
+ router.post('/create', isAuth, async (req, res) => {
 
-    const gameData = req.body;
-    try {
-        await gameService.create(req.user._id, gameData);
+     const gameData = req.body;
+     try {
+         await gameService.create(req.user._id, gameData);
 
 
     } catch (error) {
@@ -88,7 +88,7 @@ router.post('/create', isAuth, async (req, res) => {
     }
     res.redirect('/game/catalog');
 
-});
+ });
 
 
 module.exports = router;
